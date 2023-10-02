@@ -7,7 +7,7 @@ import pl.bristleback.server.bristle.api.annotations.Action;
 import pl.bristleback.server.bristle.api.annotations.ActionClass;
 import pl.bristleback.server.bristle.engine.user.BaseUserContext;
 
-@ActionClass(name = "HelloWorld")
+@ActionClass(name = "Hello-saikumar-World")
 @Controller
 public class HelloWorldAction implements DefaultAction<BaseUserContext, String> {
 
