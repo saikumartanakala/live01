@@ -6,16 +6,16 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-    stage ('Build Docker Image') {
-        
-        steps {
-            script {
-                sh 'Docker Build -t saikumartanakala/newimage .'
+        stage ('Build Docker Image') {
+            steps {
+                script {
+                    sh 'Docker Build -t saikumartanakala/newimage .'
+                }
             }
         }
     }
-    }
 }
+
 
     
         
