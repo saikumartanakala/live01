@@ -32,5 +32,9 @@ pipeline {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
                     sh 'docker run newimage1'
+                }
+            }
+        }
     }
 }
+        
