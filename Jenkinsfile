@@ -11,7 +11,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stages ('Build Docker Image') {
+        stage ('Build Docker Image') {
             steps {
                 script {
                     sh 'Docker Build -t saikumartanakala/task4 .'
