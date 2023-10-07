@@ -23,7 +23,7 @@ pipeline {
 }
                     sh 'docker push saikumartanakala/newimage1'
                     sh 'docker build -t saikumartanakala/newimage1 .'
-                    sh 'docker run newimage1'
+                    sh 'docker pull newimage1'
                 }
             }
         }
