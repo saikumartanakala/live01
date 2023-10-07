@@ -22,7 +22,7 @@ pipeline {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
                     sh 'docker push saikumartanakala/newimage1'
-                    docker rmi -f $(docker images -q)
+                    sh 'docker rmi -f $(docker images -q)'
                 }
             }
         }
