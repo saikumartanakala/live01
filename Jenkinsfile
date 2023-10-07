@@ -25,7 +25,7 @@ pipeline {
                 }
             }
         }
-        stage('run Docker Image') {
+        stage('pull Docker Image') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'saikumartanakala', variable: 'dockerhub')]) {
