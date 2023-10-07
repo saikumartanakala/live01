@@ -32,7 +32,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'saikumartanakala', variable: 'dockerhub')]) {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
-                    sh "docker pull newimage1"
+sh "docker pull newimage1"
                 }
             }
         }
