@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    stage ('build') {
+    stages {
+        stage ('build') {
             steps {
                 sh 'mvn clean package'
             }
-    }
+        }
     stage ('Build Docker Image') {
         
         steps {
@@ -13,7 +14,12 @@ pipeline {
             }
         }
     }
+    }
 }
+
+    
+        
+    
 
 
         
