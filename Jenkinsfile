@@ -37,7 +37,6 @@ sh "docker pull saikumartanakala/newimage2"
         }
         stage('Build') {
             steps {
-            }
             post {
                 success {
                     slackSend(
@@ -56,5 +55,6 @@ sh "docker pull saikumartanakala/newimage2"
             }
         }
     }
+}
 }
         
