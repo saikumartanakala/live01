@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t saikumartanakala/newimage1 .'
-                    sh 'docker run -it newimage1'
+                    sh 'docker run newimage1'
                 }
             }
         }
