@@ -11,10 +11,6 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage (deploy) {
-            steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://13.233.23.109:8081/')], contextPath: 'vamsi', war: '**/*.war'
-            }
-        }
+
     }
 }
