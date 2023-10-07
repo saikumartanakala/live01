@@ -35,6 +35,17 @@ sh "docker pull saikumartanakala/newimage3"
                 }
             }
         }
+         stage('My Slack Notification') {
+            steps {
+                script {
+                    slackSend(
+                        color: 'good',
+                        message: "DOcker task is successful!",
+                        channel: '#jenkinsnotification'
+                    )
+                }
+            }
+        }
     }
     post {
          success {
