@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t saikumartanakala/newimage .'
+                    sh 'docker build -t saikumartanakala/newimage1 .'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'saikumartanakala', variable: 'dockerhub')]) {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
-                    sh 'docker push saikumartanakala/newimage'
+                    sh 'docker push saikumartanakala/newimage1'
                 }
             }
         }
