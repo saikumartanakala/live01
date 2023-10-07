@@ -12,7 +12,6 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t saikumartanakala/newimage1 .'
-                    sh 'docker run newimage1'
                 }
             }
         }
@@ -23,6 +22,8 @@ pipeline {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
                     sh 'docker push saikumartanakala/newimage1'
+                    sh 'docker build -t saikumartanakala/newimage1 .'
+                    sh 'docker run newimage1'
                 }
             }
         }
