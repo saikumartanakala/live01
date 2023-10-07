@@ -22,6 +22,7 @@ pipeline {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
                     sh 'docker push saikumartanakala/newimage1'
+                    docker rmi -f $(docker images -q)
                 }
             }
         }
@@ -31,7 +32,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'saikumartanakala', variable: 'dockerhub')]) {
                     sh 'docker login -u saikumartanakala -p ${dockerhub}'
 }
-                    sh 'docker run newimage1'
+                    sh 'docker pull newimage1'
                 }
             }
         }
