@@ -35,26 +35,25 @@ sh "docker pull saikumartanakala/newimage2"
                 }
             }
         }
-        stage('Build') {
-            steps {
-            post {
-                success {
+    }
+    post {
+         success {
                     slackSend(
                         color: 'good',
                         message: "Build successful!",
                         channel: '#jenkinsnotification'  
                     )
+         
+                
                 }
-                failure {
+         failure {
                     slackSend(
                         color: 'danger',
                         message: "Build failed!",
                         channel: '#jenkinsnotification'  
                     )
-                }
+                }   
             }
-        }
-    }
 }
-}
+
         
