@@ -42,6 +42,16 @@ sh "docker pull saikumartanakala/newimage3"
                 }
             }
         }
+        stage ('Run Docker container on jenkins agent') {
+            steps {
+                sh "docker run -d -p 8082:8080 saikumartanakala/newimage3"
+            }
+        }
+        stage ('Run Docker container on remot hosts') {
+            steps {
+                sh "docker -H ssh://jenkins@13.210.180.192 run -d -p 8082:8080 saikumartanakala/newimage3"
+            }
+        }
         /* stage('My Slack Notification') {
             steps {
                 script {
