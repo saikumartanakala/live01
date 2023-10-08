@@ -27,7 +27,7 @@ step-2
 step-3
 CONFIGURE THE JENKINS JOB
 1. goto manage jenkins-->click on plugins---->click on avaliable plugins---->
-2. 1.maven integration 2. pipeline maven integration 3. pipeline utility steps 4. CloudBees Docker Build and PublishVersion  5. docker 6. docker-build step  7. slack notification  8. docker pipeline(install 8 plugins) & restart jenkins
+2. 1.maven integration 2. pipeline maven integration 3. pipeline utility steps 4. CloudBees Docker Build and PublishVersion  5. docker 6. docker-build step  7. slack notification  8. docker pipeline 9. Deploy to container (install 9 plugins) & restart jenkins
 STEP-3
 1. click on new item
 2. select pipeline
