@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('start the docker') {
+            steps {
+                script {
+                    sh 'systemctl start docker'
+                }
+            }
+        }
         stage('Build Maven') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/saikumartanakala/live01.git']])
