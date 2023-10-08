@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-      //  stage('start the docker') {
-        //    steps {
-          //      script {
-            //        sh 'sudo systemctl start docker'
-              //  }
-            //}
-        //}
+      /*  stage('start the docker') {
+            steps {
+                script {
+                    sh 'sudo systemctl start docker'
+                }
+            }
+        }*/
         stage('Build Maven') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/saikumartanakala/live01.git']])
@@ -42,7 +42,7 @@ sh "docker pull saikumartanakala/newimage3"
                 }
             }
         }
-         stage('My Slack Notification') {
+        /* stage('My Slack Notification') {
             steps {
                 script {
                     slackSend(
@@ -52,7 +52,7 @@ sh "docker pull saikumartanakala/newimage3"
                     )
                 }
             }
-        }
+        }*/
     }
     post {
          success {
