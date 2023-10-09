@@ -87,3 +87,4 @@ CONFIGURE THE SLACK NOTIFICATION
 14. in jenkins freestyle project setup oin post-build action
 15. in jenkins pipeline project set the small changes
              edit to commits
+    12 build
