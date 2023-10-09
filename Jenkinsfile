@@ -6,12 +6,12 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/saikumartanakala/live01.git/']]])
             }
         }
-        stage('Build') {
+        stage('Build maven') {
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage('dockerfile') {
+        stage('docker build') {
             steps {
                 sh 'docker build -t saikumartanakala/newimage1 .'
             }
