@@ -42,8 +42,12 @@ pipeline {
                 sh 'docker run -d -p 8081:8080 saikumartanakala/cakezone' 
             }
         }
+        stage('Slack Notification') {
+            step {
+                echo: 'slack notification'
+            }
+        }
     }
-    stage('Slack Notification')
      post {
          success {
                     slackSend(
