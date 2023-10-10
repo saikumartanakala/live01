@@ -87,5 +87,5 @@ CONFIGURE THE SLACK NOTIFICATION
 14. in jenkins freestyle project setup oin post-build action
 15. in jenkins pipeline project set the small changes
              edit to commits
-    12 build
-jncknd
+how to give the user  to group  
+chmod 777 /var/run/docker.sock
