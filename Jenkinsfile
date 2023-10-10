@@ -1,7 +1,7 @@
 pipeline {
-    agent any
-            tool name: 'docker', type: 'dockerTool'
-         
+    agent any{
+                dockerTool 'docker'
+    }
     stages {
         stage('checkout') {
             steps {
