@@ -15,11 +15,11 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Docker start') {
+      /*  stage('Docker start') {
             steps {
                 sh 'systemctl start docker'
             }
-        }
+        }*/
         stage('docker build') {
             steps {
                 sh 'docker build -t saikumartanakala/cakezone .'
