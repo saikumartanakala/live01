@@ -43,4 +43,23 @@ pipeline {
             }
         }
     }
+    stage('Slack Notification')
+     post {
+         success {
+                    slackSend(
+                        color: 'good',
+                        message: "Build successful!",
+                        channel: '#jenkinsnotification'  
+                    )
+         
+                
+                }
+         failure {
+                    slackSend(
+                        color: 'danger',
+                        message: "Build failed!",
+                        channel: '#jenkinsnotification'  
+                    )
+                }   
+            }
 }
