@@ -1,6 +1,5 @@
 pipeline {
-    agent any
-     post {
+    post {
          success {
                     slackSend(
                         color: 'good',
@@ -9,6 +8,7 @@ pipeline {
                     )
                 }
      }
+    agent any
   //  tools {
         // Define the Docker tool installation named 'docker'
        // dockerTool 'docker'
