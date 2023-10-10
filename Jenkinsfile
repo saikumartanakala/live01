@@ -24,7 +24,7 @@ pipeline {
             steps {
                // sh 'docker login -u saikumartanakala -p Saikumar@7979'
                 withDockerRegistry(credentialsId: 'a421b438-9344-45ea-bdae-fe208c997db7') {
-                sh 'docker tag cakezone:latest .'
+                sh 'docker build -t cakezone:latest .'
                  sh 'docker tag cakezone:latest saikumartanakala/cakezone:latest'
                 sh 'docker push saikumartanakala/cakezone:latest' 
                 sh 'docker rmi -f saikumartanakala/cakezone'
