@@ -1,47 +1,44 @@
 pipeline {
-    agent any {
-               
-                }
-     dockerTool 'docker'
+    agent any
+    tools {
+        // Define the Docker tool installation named 'docker'
+        tool 'docker'
+    }
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
+                // Checkout the code from Git
                 git branch: 'main', url: 'https://github.com/saikumartanakala/live01.git'
-               // checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/saikumartanakala/live01.git/']]])
             }
         }
-        stage('Build maven') {
+        stage('Build Maven') {
             steps {
+                // Build your Maven project
                 sh 'mvn clean install'
             }
         }
-      /*  stage('Docker start') {
+        stage('Docker Build') {
             steps {
-                sh 'systemctl start docker'
-            }
-        }*/
-        stage('docker build') {
-            steps {
+                // Build your Docker image
                 sh 'docker build -t saikumartanakala/cakezone .'
             }
         }
-        stage('login') {
+        stage('Docker Login and Push') {
             steps {
-               // sh 'docker login -u saikumartanakala -p Saikumar@7979'
-             withDockerRegistry(credentialsId: '081afc55-4fa0-4dbe-8b84-7aefdc7e8371', toolName: 'docker') {
-                sh 'docker build -t cakezone:latest .'
-                 sh 'docker tag cakezone:latest saikumartanakala/cakezone:latest'
-                sh 'docker push saikumartanakala/cakezone:latest' 
-                sh 'docker rmi -f saikumartanakala/cakezone'
+                // Log in to Docker Hub and push the image
+                withDockerRegistry(credentialsId: '081afc55-4fa0-4dbe-8b84-7aefdc7e8371', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t cakezone:latest .'
+                    sh 'docker tag cakezone:latest saikumartanakala/cakezone:latest'
+                    sh 'docker push saikumartanakala/cakezone:latest' 
+                    sh 'docker rmi -f saikumartanakala/cakezone'
+                }
             }
         }
-    }
-        stage('Docker Run ') {
+        stage('Docker Run') {
             steps {
+                // Remove existing containers and run your Docker container
                 sh 'docker container rm -f $(docker ps -qa) '
                 sh 'docker run -d -p 8081:8080 saikumartanakala/cakezone' 
-                
-                // sh "docker cp /path/to/your/local/files/. container_id:/usr/local/tomcat/webapps/ROOT" 
             }
         }
     }
