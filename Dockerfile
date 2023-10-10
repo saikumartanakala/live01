@@ -1,3 +1,3 @@
 FROM tomcat:9
 EXPOSE 8081
-ADD ./target/live/ /usr/local/tomcat/webapps/
+ADD ./target/live.war /usr/local/tomcat/webapps/
