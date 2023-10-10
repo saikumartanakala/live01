@@ -1,5 +1,14 @@
 pipeline {
     agent any
+     post {
+         success {
+                    slackSend(
+                        color: 'good',
+                        message: "Build successful!",
+                        channel: '#jenkinsnotification'  
+                    )
+                }
+     }
   //  tools {
         // Define the Docker tool installation named 'docker'
        // dockerTool 'docker'
@@ -50,8 +59,6 @@ pipeline {
                         message: "Build successful!",
                         channel: '#jenkinsnotification'  
                     )
-         
-                
                 }
          failure {
                     slackSend(
