@@ -20,6 +20,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 // Build your Docker image
+                sh 'systemctl start docker'
                 sh 'docker build -t saikumartanakala/cakezone .'
             }
         }
