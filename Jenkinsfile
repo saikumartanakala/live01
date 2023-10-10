@@ -17,21 +17,22 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                sh 'docker build -t saikumartanakala/newimage1 .'
+                sh 'docker build -t saikumartanakala/cakezone .'
             }
         }
         stage('login') {
             steps {
                // sh 'docker login -u saikumartanakala -p Saikumar@7979'
                 withDockerRegistry(credentialsId: 'a421b438-9344-45ea-bdae-fe208c997db7') {
-                sh 'docker push saikumartanakala/newimage1' 
+                sh 'docker rmi $(docker images -a)'
+                sh 'docker push saikumartanakala/cakezone' 
             }
         }
     }
         stage('Docker Run ') {
             steps {
                 sh 'docker container rm -f $(docker ps -qa) '
-                sh 'docker run -d -p 8081:8080 saikumartanakala/newimage1' 
+                sh 'docker run -d -p 8081:8080 saikumartanakala/cakezone' 
                 
                 // sh "docker cp /path/to/your/local/files/. container_id:/usr/local/tomcat/webapps/ROOT" 
             }
