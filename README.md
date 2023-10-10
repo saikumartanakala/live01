@@ -88,3 +88,4 @@ CONFIGURE THE SLACK NOTIFICATION
 15. in jenkins pipeline project set the small changes
              edit to commits
     12 build
+jncknd
