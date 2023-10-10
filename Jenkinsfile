@@ -24,7 +24,7 @@ pipeline {
             steps {
                // sh 'docker login -u saikumartanakala -p Saikumar@7979'
                 withDockerRegistry(credentialsId: 'a421b438-9344-45ea-bdae-fe208c997db7') {
-                sh 'docker rmi $(docker images -a)'
+                sh 'docker rmi $(docker images -q)'
                 sh 'docker push saikumartanakala/cakezone' 
             }
         }
