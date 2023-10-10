@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    tool name: 'docker', type: 'dockerTool'
     stages {
         stage('checkout') {
             steps {
@@ -18,10 +19,12 @@ pipeline {
         }
         stage('login') {
             steps {
-                sh 'docker login -u saikumartanakala -p Saikumar@7979'
+               // sh 'docker login -u saikumartanakala -p Saikumar@7979'
+                withDockerRegistry(credentialsId: 'a421b438-9344-45ea-bdae-fe208c997db7') {
                 sh 'docker push saikumartanakala/newimage1' 
             }
         }
+    }
         stage('Docker Run ') {
             steps {
                 sh 'docker run -d -p 8081:8080 saikumartanakala/newimage1' 
