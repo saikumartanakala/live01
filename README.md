@@ -79,13 +79,14 @@ CONFIGURE THE SLACK NOTIFICATION
 6. add slack channel
 7. add the Jenkins CI integration.
 8. add crridentials----->jenkins
-9. select kind as secret text paste it Integration Token Credential ID copy
-10. click add
-11. member id  is a channel id
-12. and check the connection
-13. apply and save
-14. in jenkins freestyle project setup oin post-build action
-15. in jenkins pipeline project set the small changes
+9. workspace name is teamsaikumar
+10. select kind as secret text paste it Integration Token Credential ID copy
+11. click add
+12. member id  is a channel id
+13. and check the connection
+14. apply and save
+15. in jenkins freestyle project setup oin post-build action
+16. in jenkins pipeline project set the small changes
              edit to commits
 how to give the user  to group  
 chmod 777 /var/run/docker.sock
