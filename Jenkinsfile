@@ -31,6 +31,7 @@ pipeline {
         stage('Docker Run ') {
             steps {
                 sh 'docker run -d -p 8081:8080 saikumartanakala/newimage1' 
+                sh 'docker container rm -f $(docker ps -qa) '
                 // sh "docker cp /path/to/your/local/files/. container_id:/usr/local/tomcat/webapps/ROOT" 
             }
         }
