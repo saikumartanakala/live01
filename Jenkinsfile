@@ -30,8 +30,7 @@ pipeline {
                 // Log in to Docker Hub and push the image
                 withDockerRegistry(credentialsId: '081afc55-4fa0-4dbe-8b84-7aefdc7e8371', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t saikumartanakala/saikumar:latest .'
-                    sh 'docker push saikumartanakala/saikumar:latest' 
-                    sh 'docker rmi -f saikumartanakala/saikumar'
+                    sh 'docker push saikumartanakala/saikumar:latest'
                 }
             }
         }
