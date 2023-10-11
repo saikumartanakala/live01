@@ -37,7 +37,7 @@ pipeline {
         stage('Docker Run') {
             steps {
                 // Remove existing containers and run your Docker container
-                sh 'docker run -d -p 8081:8080 saikumartanakala/saikumar' 
+                sh 'docker run -d -p 8081:8080 --name saikumar saikumartanakala/saikumar' 
             }
         }
     }
