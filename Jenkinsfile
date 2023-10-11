@@ -21,7 +21,7 @@ pipeline {
             steps {
                 // Build your Docker image
                
-                sh 'docker build -t saikumartanakala/cakezone .'
+                sh 'docker build -t saikumartanakala/saikumar .'
             }
         }
         stage('Docker Login and Push') {
@@ -29,9 +29,9 @@ pipeline {
                 // Log in to Docker Hub and push the image
                 withDockerRegistry(credentialsId: '081afc55-4fa0-4dbe-8b84-7aefdc7e8371', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t cakezone:latest .'
-                    sh 'docker tag cakezone:latest saikumartanakala/cakezone:latest'
-                    sh 'docker push saikumartanakala/cakezone:latest' 
-                    sh 'docker rmi -f saikumartanakala/cakezone'
+                    sh 'docker tag cakezone:latest saikumartanakala/saikumar:latest'
+                    sh 'docker push saikumartanakala/saikumar:latest' 
+                    sh 'docker rmi -f saikumartanakala/saikumar'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 // Remove existing containers and run your Docker container
                 sh 'docker container rm -f $(docker ps -qa) '
-                sh 'docker run -d -p 8081:8080 saikumartanakala/cakezone' 
+                sh 'docker run -d -p 8081:8080 saikumartanakala/saikumar' 
             }
         }
     }
