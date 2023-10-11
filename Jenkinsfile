@@ -17,19 +17,19 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Docker Build') {
+        stage('Docker container remove & image remove') {
             steps {
-                // Build your Docker image
-               
-                sh 'docker build -t saikumartanakala/saikumar .'
+                // remove container
+                sh 'docker container rm -f $(docker ps -qa) '
+                sh 'docker rmi -f $(docker images -q)'
+                
             }
         }
-        stage('Docker Login and Push') {
+        stage('Docker build and Push') {
             steps {
                 // Log in to Docker Hub and push the image
                 withDockerRegistry(credentialsId: '081afc55-4fa0-4dbe-8b84-7aefdc7e8371', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t cakezone:latest .'
-                    sh 'docker tag cakezone:latest saikumartanakala/saikumar:latest'
+                    sh 'docker build -t saikumartanakala/saikumar:latest .'
                     sh 'docker push saikumartanakala/saikumar:latest' 
                     sh 'docker rmi -f saikumartanakala/saikumar'
                 }
@@ -38,7 +38,6 @@ pipeline {
         stage('Docker Run') {
             steps {
                 // Remove existing containers and run your Docker container
-                sh 'docker container rm -f $(docker ps -qa) '
                 sh 'docker run -d -p 8081:8080 saikumartanakala/saikumar' 
             }
         }
